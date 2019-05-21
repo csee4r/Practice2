@@ -2,8 +2,10 @@ package com.example.yun.caalarm;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
+import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -90,6 +92,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.menuBt) {
             drawer.openDrawer(GravityCompat.START);
         } else if (v.getId() == R.id.taggingBt) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri.Builder uriBuilder = Uri.parse("https://play.google.com/store/apps/details?id=edu.handong.smartcampus.launcher")
+                    .buildUpon()
+                    .appendQueryParameter("id", "com.example.android")
+                    .appendQueryParameter("launch", "true");
+
+            // Optional parameters, such as referrer, are passed onto the launched
+            // instant app. You can retrieve these parameters using
+            // Activity.getIntent().getData().
+            uriBuilder.appendQueryParameter("referrer", "exampleCampaignId");
+
+            intent.setData(uriBuilder.build());
+            intent.setPackage("com.android.vending");
+            startActivity(intent);
 
         } else if (v.getId() == R.id.infoBt) {
             isView = !isView;
@@ -102,6 +118,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else{
                 FragmentTransaction ft=manager.beginTransaction();
                 ft.remove(mapFragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
 
         } else if (v.getId() == R.id.alarmBt) {
