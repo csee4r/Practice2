@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/introLayout"
+    android:background="#ffffff"
+    tools:context=".IntroActivity">
+
+    <ImageView
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/intro_img"
+        android:layout_width="80dp"
+        android:scaleType="fitXY"
+        android:id="@+id/introImg"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:layout_below="@+id/introImg"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:id="@+id/introTv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="잊지말자 출첵!"
+        />
+
+</RelativeLayout>
